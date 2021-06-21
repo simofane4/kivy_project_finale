@@ -1,0 +1,58 @@
+
+<ContBox>
+    orientation: "vertical"
+    spacing: "12dp"
+    size_hint_y: None
+    height: "350dp"
+
+
+
+<ContenBox>
+    orientation: "vertical"
+    spacing: "12dp"
+    size_hint_y: None
+    height: "350dp"
+
+    MDTextField:
+        hint_text: "ID de Fournisseur "
+
+    MDTextField:
+        hint_text: "Nom de Fournisseur"
+    MDTextField:
+        hint_text: "Prénom de Fournisseur "
+
+    MDTextField:
+        hint_text: "Adresse de Fournisseur"
+    MDTextField:
+        hint_text: "email de Fournisseur"
+
+
+<MainAppFournisseur>
+    name: "fournisseur"
+
+    Toolbar:
+        id: toolbar
+        pos_hint: {"top": 1}
+
+    
+    MDTextFieldRound:
+        hint_text: 'Recherche'
+        mode: 'fill'
+        size_hint: (0.55, 0.07)
+        pos_hint:{"center_x":0.35, "center_y":0.83}
+        fill_color: 0, 0, 0, .4
+    MDIconButton:
+        icon:"database-search"
+        user_font_size: "50sp"
+        pos_hint:{"center_x":0.7, "center_y":0.83}
+    MDRoundFlatButton:
+        text:"Ajouter"
+        pos_hint:{"center_x":0.15, "center_y":0.1}
+        on_release: root.show_example_custom_dialog()
+    MDRoundFlatButton:
+        text:"Modifier"
+        pos_hint:{"center_x":0.35, "center_y":0.1}
+        on_release: root.show_example_cost_dialog()
+    MDRoundFlatButton:
+        text:"Supermier"
+        pos_hint:{"center_x":0.55, "center_y":0.1}

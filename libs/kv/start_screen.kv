@@ -1,0 +1,154 @@
+#:import environ os.environ
+#:import Home libs.baseclass.home.Home
+#:import MainAppDialogDev libs.baseclass.page_change_theme.MainAppDialogDev
+#:import Toolbar libs.baseclass.toolbar.Toolbar
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+
+<Toolbar>
+    md_bg_color: app.theme_cls.primary_color
+    background_palette: "Primary"
+    background_hue: "500"
+    elevation: 10
+    right_action_items: [["brightness-6", lambda x: app.switch_theme_style()] ]
+    left_action_items: [["arrow-left", lambda x: app.back_to_home_screen()]]
+
+
+MDBoxLayout:
+
+    ScreenManager:
+        id: screen_manager
+        transition: FadeTransition(duration=.2, clearcolor=app.theme_cls.bg_dark)
+
+        Home:
+            id: home
+            name: "home"
+
+            MDBackdrop:
+                id: backdrop
+                title: "Gestion Des Stock Du Piéce  Du Rechange"
+                header_text: "Menu:"
+                left_action_items: [["menu", lambda x: self.open()]]
+                on_open: home.opening_animation_backdrop_components(backdrop, backlayer)
+                on_close:
+                    home.closing_animation_backdrop_components(backdrop, backlayer)
+
+                MDBackdropBackLayer:
+
+                    MainAppBackdropBackLayer:
+                        id: backlayer
+
+                MDBackdropFrontLayer:
+                    id: front_layer
+
+                    MainAppBackdropFrontLayer:
+                        id: backdrop_front_layer
+
+
+<MainAppBackdropFrontLayer@RecycleView>
+    key_viewclass: "viewclass"
+    key_size: "height"
+
+    RecycleBoxLayout:
+        default_size: None, dp(48)
+        default_size_hint: 1, None
+        size_hint_y: None
+        height: self.minimum_height
+        orientation: "vertical"
+
+
+<MainAppBackdropBackLayer@FloatLayout>
+    scale_x: 0
+    scale_y: 0
+
+    Image:
+        opacity: .2
+        source: f"{environ['MAINAPP_ASSETS']}kivymd.png"
+        pos_hint: {"center_y": .55}
+        canvas.before:
+            PushMatrix
+            Scale:
+                origin: self.center
+                x: root.scale_x
+                y: root.scale_y
+        canvas.after:
+            PopMatrix
+
+
+    ScrollView:
+
+        MDGridLayout:
+            adaptive_height: True
+            cols: 1
+            padding: "10dp"
+            spacing: "10dp"
+
+            MDBoxLayout:
+                orientation: "vertical"
+                adaptive_height: True
+                padding: "5dp"
+                spacing: "10dp"
+
+                MDLabel:
+                    text: "Change Style"
+                    bold: True
+                    theme_text_color: "Primary"
+
+                MDBoxLayout:
+                    size_hint: None, None
+                    adaptive_size: True
+                    spacing: "30dp"
+
+                    MainAppThemeStyleCheckbox:
+
+                    Label:
+                        text: "Light"
+                        color: app.theme_cls.text_color
+
+                    MainAppThemeStyleCheckbox:
+
+                    Label:
+                        text: "Dark"
+                        color: app.theme_cls.text_color
+
+            MDSeparator:
+
+            MDLabel:
+                id: label_theme
+                text: "Current theme: {}".format(app.theme_cls.primary_palette)
+                bold: True
+                theme_text_color: "Primary"
+                adaptive_height: True
+
+            MainAppOneLineIconListItem:
+                text: "Change Theme"
+                icon: "palette-outline"
+                divider: None
+                on_release: app.show_page_change_theme()
+
+            MDSeparator:
+
+            MDLabel:
+                id: label_theme
+                text: "About Us"
+                bold: True
+                theme_text_color: "Primary"
+                adaptive_height: True
+
+            MainAppOneLineIconListItem:
+                text: "Developers"
+                icon: "dev-to"
+                divider: None
+                on_release: MainAppDialogDev().open()
+
+            
+
+            Widget:
+                size_hint_y: None
+                height: app.theme_cls.standard_increment
+
+<MainAppThemeStyleCheckbox@MDCheckbox>
+    group: "style"
+    size_hint: None, None
+    size: "48dp", "48dp"
+    on_active: if self.active: app.switch_theme_style()

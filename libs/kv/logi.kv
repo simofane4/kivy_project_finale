@@ -1,0 +1,30 @@
+<MainAppLogi>
+    name: "logi"
+    on_enter:
+        app.anim(back)
+        app.anim(back1)
+
+    MDFloatLayout:
+        MDFloatLayout:
+            id : back
+            size_hint_y: .6
+            pos_hint:{"centre_y":1.8}
+            radius:[0, 0, 0, 40]
+            canvas:
+                Color:
+                    rgb: (1, 0, 0, 1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        MDFloatLayout:
+            id : back1
+            size_hint_y: .6
+            pos_hint:{"centre_y":1.8}
+            radius:[0, 0, 0, 40]
+            canvas:
+                color:
+                    rgb: (1, 0, 0, 1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+

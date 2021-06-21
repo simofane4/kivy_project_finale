@@ -1,0 +1,70 @@
+<ContentBox>
+    orientation: "vertical"
+    spacing: "12dp"
+    size_hint_y: None
+    height: "450dp"
+    MDTextField:
+        hint_text: "ID de Pièce"
+
+    MDTextField:
+        hint_text: "Nom de Pièce"
+    MDTextField:
+        hint_text: "Poid de pièce "
+
+    MDTextField:
+        hint_text: "Type de Pièce"
+    MDTextField:
+        hint_text: "Quantité max de Pièce"
+    MDTextField:
+        hint_text: "Qualité de Pièce"
+    MDTextField:
+        hint_text: "Prix unitair de Pièce"
+
+<MainAppStock>
+    name: "stock"
+
+    MDBanner:
+        id: banner
+        over_widget: scroll
+
+    BoxLayout:
+        orientation: "vertical"
+        spacing: "10dp"
+
+        Toolbar:
+            id: toolbar
+
+        ScrollView:
+            id: scroll
+
+            MDGridLayout:
+                adaptive_height: True
+                cols: 1
+                padding: "10dp"
+                spacing: "10dp"
+
+    MDTextFieldRound:
+        hint_text: 'Fill'
+        mode: 'fill'
+        size_hint: (0.55, 0.07)
+        pos_hint:{"center_x":0.35, "center_y":0.83}
+        fill_color: 0, 0, 0, .4
+    MDIconButton:
+        icon:"database-search"
+        user_font_size: "50sp"
+        pos_hint:{"center_x":0.7, "center_y":0.83}
+    MDRoundFlatButton:
+        text:"Ajouter"
+        pos_hint:{"center_x":0.15, "center_y":0.1}
+        on_release: root.show_example_custom_dialog()
+    MDRoundFlatButton:
+        text:"Modifier"
+        pos_hint:{"center_x":0.35, "center_y":0.1}
+
+    MDRoundFlatButton:
+        text:"Supermier"
+        pos_hint:{"center_x":0.55, "center_y":0.1}
+
+
+
+

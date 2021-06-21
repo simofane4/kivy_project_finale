@@ -1,0 +1,42 @@
+<MainAppOneLineIconListItem>
+
+    IconLeftWidget:
+        icon: root.icon
+
+
+<MainAppOneLineLeftIconItem>
+
+    IconLeftWidget:
+        icon: root.icon
+
+
+<MainAppTwoLineLeftIconItem>
+
+    IconLeftWidget:
+        icon: root.icon
+
+
+<MainAppTwoLineLeftAvatarItem>
+    secondary_theme_text_color: "Custom"
+    secondary_text_color: app.theme_cls.primary_color
+
+    ImageLeftWidget:
+        source: root.icon
+
+
+<MainAppOneLineLeftAvatarItem>
+
+    ImageLeftWidget:
+        source: root.source
+
+
+<MainAppOneLineLeftWidgetItem>
+    on_release: app.theme_cls.primary_palette = root.text
+
+    LeftWidget:
+        canvas.before:
+            Color:
+                rgba: root.color
+            Ellipse:
+                pos: self.pos
+                size: self.size

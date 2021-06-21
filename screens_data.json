@@ -1,0 +1,52 @@
+{
+    "Login" : {
+        "kv_string": "logi",
+        "Factory": "MainAppLogi()",
+        "Import": "from libs.baseclass.logi import MainAppLogi ",
+        "name_screen": "logi",
+        "icon": "message-alert-outline"
+    },
+    "Piece": {
+        "kv_string": "stock",
+        "Factory": "MainAppStock()",
+        "Import": "from libs.baseclass.stock import MainAppStock ",
+        "name_screen": "stock",
+        "icon": "message-alert-outline"
+    },
+    "Vent": {
+        "kv_string": "vent",
+        "Factory": "MainAppVent()",
+        "Import": "from libs.baseclass.vent import MainAppVent",
+        "name_screen": "vent",
+        "icon": "picture-in-picture-bottom-right"
+
+    },
+    "Achat": {
+        "kv_string": "achat",
+        "Factory": "MainAppAchat()",
+        "Import": "from libs.baseclass.achat import MainAppAchat",
+        "name_screen": "achat",
+        "icon": "table-large"
+    },
+    "Fournisseur": {
+        "kv_string": "fournisseur",
+        "Factory": "MainAppFournisseur()",
+        "Import": "from libs.baseclass.fournisseur import MainAppFournisseur",
+        "name_screen": "fournisseur",
+        "icon": "text-box-outline"
+    },
+    "Client": {
+        "kv_string": "client",
+        "Factory": "MainAppClient()",
+        "Import": "from libs.baseclass.client import MainAppClient",
+        "name_screen": "client",
+        "icon": "arrow-down-drop-circle"
+    },
+    "Facture": {
+        "kv_string": "facture",
+        "Factory": "MainAppFacture()",
+        "Import": "from libs.baseclass.facture import MainAppFacture",
+        "name_screen": "facture",
+        "icon": "percent"
+    }
+}
