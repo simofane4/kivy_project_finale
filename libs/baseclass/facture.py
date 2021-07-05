@@ -30,7 +30,7 @@ class MainAppFacture(MDScreen):
     def on_enter(self):
         data_tables = MDDataTable(
             size_hint=(0.9, 0.4),
-            pos_hint={"center_x": 0.6, "center_y": 0.3},
+            pos_hint={"center_x": 0.5, "center_y": 0.45},
             rows_num=10,
             column_data=[
                 ("nom facture", dp(70)),

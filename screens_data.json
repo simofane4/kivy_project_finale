@@ -1,11 +1,5 @@
 {
-    "Login" : {
-        "kv_string": "logi",
-        "Factory": "MainAppLogi()",
-        "Import": "from libs.baseclass.logi import MainAppLogi ",
-        "name_screen": "logi",
-        "icon": "message-alert-outline"
-    },
+
     "Piece": {
         "kv_string": "stock",
         "Factory": "MainAppStock()",

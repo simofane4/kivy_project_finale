@@ -8,6 +8,7 @@ from kivy.core.window import Window
 from kivy.factory import Factory  
 from kivy.lang import Builder
 from kivy.loader import Loader
+from libs.baseclass.login import MainAppLogin
 from libs.baseclass.page_change_theme import (
     MainAppPageChangeTheme,
    
@@ -48,11 +49,7 @@ Window.softinput_mode = "below_target"
 # hadi lmaine  app dyali 
 
 class MainApp(MDApp):
-    data = {
-        'Python': 'language-python',
-        'PHP': 'language-php',
-        'C++': 'language-cpp',
-    }
+    
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -77,6 +74,8 @@ class MainApp(MDApp):
                 os.environ["MAINAPP_ROOT"], "libs", "kv", "start_screen.kv"
             )
         )
+
+    
 
     def show_page_change_theme(self):
         if not self.page_change_theme:
@@ -114,6 +113,8 @@ class MainApp(MDApp):
                     ),
                 }
             )
+        
+        self.root.ids.screen_manager.current = "login"
 
 
     def set_example_screen(self, name_screen):
@@ -138,6 +139,8 @@ class MainApp(MDApp):
                 screen_object.ids.toolbar.title = name_screen
             manager.add_widget(screen_object)
         manager.current = self.data_screens[name_screen]["name_screen"]
+    
+        
 
 
 
@@ -150,6 +153,18 @@ class MainApp(MDApp):
             "Light" if self.theme_cls.theme_style == "Dark" else "Dark"
         )
         self.root.ids.backdrop.ids._front_layer.md_bg_color = [0, 0, 0, 0]
+        
+ # hado homa les button li fl
+
+ 
+    def open_home_screen(self):
+        self.root.ids.screen_manager.current = "home"
+
+    def open_register_screen(self):
+        self.root.ids.screen_manager.current = "register"
+
+    def back_to_login_screen(self):
+        self.root.ids.screen_manager.current = "login"
 
 
 MainApp().run()
